@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Emotion AI Chatbot</title>
+
+    <style>
+
+        body {
+            background-color: #f0f2f5;
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .chat-container {
+            width: 500px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0px 0px 10px gray;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .chat-box {
+            height: 400px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+
+        .user-message {
+            background-color: #0084ff;
+            color: white;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: right;
+        }
+
+        .bot-message {
+            background-color: #e4e6eb;
+            padding: 10px;
+            border-radius: 10px;
+            margin: 10px;
+            text-align: left;
+        }
+
+        input {
+            width: 75%;
+            padding: 10px;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="chat-container">
+
+        <h1>Emotion AI Chatbot</h1>
+
+        <div class="chat-box">
+
+            {% for chat in chat_history %}
+
+                <div class="user-message">
+                    {{ chat.user }}
+                </div>
+
+                <div class="bot-message">
+                    {{ chat.bot }}
+                    <br><br>
+                    <strong>Emotion:</strong> {{ chat.emotion }}
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text" name="message" placeholder="Type your message">
+
+            <button type="submit">Send</button>
+
+        </form>
+
+    </div>
+
+</body>
+
+</html>
