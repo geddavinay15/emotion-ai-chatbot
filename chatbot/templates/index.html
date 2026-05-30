@@ -78,19 +78,20 @@
 
         <div class="chat-box">
 
-            {% for chat in chat_history %}
+           {% for chat in chat_history %}
 
-                <div class="user-message">
-                    {{ chat.user }}
-                </div>
+     <div class="user-message">
+      {{ chat.user_message }}
+    </div>
 
-                <div class="bot-message">
-                    {{ chat.bot }}
-                    <br><br>
-                    <strong>Emotion:</strong> {{ chat.emotion }}
-                </div>
+    
+     <div class="bot-message">
+    {{ chat.bot_response }}
+    <br><br>
+    <strong>Emotion:</strong> {{ chat.detected_emotion }}
+   </div>
 
-            {% endfor %}
+{% endfor %}
 
         </div>
 
